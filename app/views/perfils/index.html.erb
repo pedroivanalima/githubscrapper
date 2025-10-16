@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Perfils" %>
+
+<h1>Perfis</h1>
+
+<div class='principal'>
+  
+  <div class='flex-div'>
+    <div>
+      <%= form_with url: perfils_path, method: :get do |form| %>
+        <%= form.search_field :texto, value: params[:texto] %>
+        <%= form.submit "Procurar", class: 'botao' %>
+      <% end %>
+    </div>
+    <div class='alinhar-direita'>
+      <%= link_to "Adicionar perfil", new_perfil_path, class: 'botao' %>
+    </div>
+  </div>
+  
+
+  <div id="perfils" class='table-div'>
+      <div class='table-tr'>
+          <div class='table-td'>
+            <strong> Nome </strong>
+          </div>
+          <div class='table-td'>
+            <strong> Link Github </strong>
+          </div>
+      </div>
+      <% @perfils.each do |perfil| %>
+        <%= render "linha_perfil", perfil: perfil %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

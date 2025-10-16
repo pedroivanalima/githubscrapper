@@ -1,0 +1,7 @@
+<div>
+    <b>Última busca</b>
+    <br>
+    <small><%= busca.updated_at.strftime("%d/%m/%Y %H:%M:%S") %></small><br>
+    Status: <%= circulo_status(busca.status) %> <%= busca.status %><br><br>
+    Total Buscas: <%=busca.perfil.buscas.count %>
+</div>

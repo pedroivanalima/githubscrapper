@@ -1,0 +1,11 @@
+<div class='table-tr'>
+    <div class='table-td'>
+        <%= perfil.nome %>
+    </div>
+    <div class='table-td'>
+        <%= link_to perfil.link.url_curta, perfil.link.url_original, target: "_blank" %>
+    </div>
+    <div class='table-td'>
+        <%= circulo_status(perfil.ultima_busca.status) %> <%= link_to "Editar", edit_perfil_path(perfil), class: "botao" %>
+    </div>
+</div>

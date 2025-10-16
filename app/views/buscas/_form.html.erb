@@ -1,0 +1,37 @@
+<%= form_with(model: busca) do |form| %>
+  <% if busca.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(busca.errors.count, "error") %> prohibited this busca from being saved:</h2>
+
+      <ul>
+        <% busca.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :perfil_id, style: "display: block" %>
+    <%= form.number_field :perfil_id %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :mensagem, style: "display: block" %>
+    <%= form.text_field :mensagem %>
+  </div>
+
+  <div>
+    <%= form.label :dados, style: "display: block" %>
+    <%= form.text_field :dados %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

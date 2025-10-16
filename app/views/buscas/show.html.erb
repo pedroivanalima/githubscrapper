@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @busca %>
+
+<div>
+  <%= link_to "Edit this busca", edit_busca_path(@busca) %> |
+  <%= link_to "Back to buscas", buscas_path %>
+
+  <%= button_to "Destroy this busca", @busca, method: :delete %>
+</div>

@@ -1,0 +1,113 @@
+<p style="color: green"><%= notice %></p>
+
+<%= form_with(model: perfil, class: 'form') do |form| %>
+  <%= form.hidden_field :id, value: perfil.id %>
+
+  <% if perfil.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(perfil.errors.count, "error") %> </h2>
+
+      <ul>
+        <% @resultado.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='principal flex-div'>
+      <div>
+        <%= image_tag(perfil.url_foto || "snoopy.png", { class: 'avatar' }) %>
+        <% if perfil.id.present? %>
+          <div style='text-align: center;'>
+            <h2 id='nome_avatar'> <%= perfil.nome %> </h2>
+          </div>
+          <%= render "ultima_busca", busca: perfil.ultima_busca %>
+        <% end %>
+      </div>
+    
+      <div style="align-self: flex-end">
+        <div>
+          <%= form.label :nome, style: "display: block" %>
+          <%= form.text_field :nome, onchange: "muda_nome_avatar();" %>
+        </div>
+
+        <!-- nested link -->
+        <%= form.fields_for :link do |link_form| %>
+          <%= link_form.label :url_original, style: "display: block" %>
+          <%= link_form.text_field :url_original, value: perfil.link.url_original %>
+
+          <% unless perfil.id.nil? %>
+            <%= link_form.hidden_field :id, value: perfil.link.id %>
+            <%= link_form.label :url_curta, style: "display: block" %>
+            <%= link_form.text_field :url_curta, value: perfil.link.url_curta, readonly: true %>
+          <% end %>
+        <% end %>
+
+        <!-- Na criação esconde os campos que serão buscados -->
+        <% unless perfil.id.nil? %>
+          <div>
+            <%= form.label :nome_usuario, style: "display: block" %>
+            <%= form.text_field :nome_usuario, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :seguidores, style: "display: block" %>
+            <%= form.text_field :seguidores, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :seguindo, style: "display: block" %>
+            <%= form.text_field :seguindo, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :estrelas, style: "display: block" %>
+            <%= form.text_field :estrelas, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :contribuicoes, style: "display: block" %>
+            <%= form.text_field :contribuicoes, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :url_foto, style: "display: block" %>
+            <%= form.text_field :url_foto, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :organizacao, style: "display: block" %>
+            <%= form.text_field :organizacao, readonly: true %>
+          </div>
+
+          <div>
+            <%= form.label :localizacao, style: "display: block" %>
+            <%= form.text_field :localizacao, readonly: true %>
+          </div>
+        <% end %> <!-- unless id --> 
+
+        <div class='flex-div'>
+          <div>
+            <%= form.submit perfil.id.nil? ? "Adicionar" : "Salvar", class: 'botao' %>
+          </div>
+
+<% end %> <!-- form for perfil -->
+      <% if perfil.id.present? %>
+          <div>
+            <%= button_to "Atualizar", buscas_path(), method: :post, params: { busca: { perfil_id: perfil.id }}, title: 'Buscar novamente no Github', class: 'botao' %>
+          </div>
+          <div>
+            <%= link_to "&#x1f5d1;".html_safe, perfil, title: 'deletar', data: { turbo_method: :delete, turbo_confirm: "Deseja mesmo deletar?" }, class: 'botao' %>
+          </div>
+      <% end %>
+      </div> <!-- div dos botões -->
+    </div> <!-- conteúdo div direita -->
+  </div> <!--table-div principal -->
+
+  <script>
+    function muda_nome_avatar(){
+      novo_nome = document.getElementById('perfil_nome').value;
+      document.getElementById('nome_avatar').innerHTML = novo_nome;
+    }
+  </script>

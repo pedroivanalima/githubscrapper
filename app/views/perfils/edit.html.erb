@@ -1,0 +1,10 @@
+<% content_for :title, "Editar perfil" %>
+
+<div class='flex-div' style="width: 40%;">
+  <h1>Editando perfil</h1>
+  <div class="alinhar-direita">
+    <%= link_to "Voltar", perfils_path, class: 'botao' %>
+  </div>
+</div>
+
+<%= render "form", perfil: @perfil %>

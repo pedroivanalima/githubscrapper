@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+    /* obrigado google */
+.botao {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 0px 5px 0px 0px;
+    background-color: #3678be; /* Blue background */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    border: none;
+}
+
+.base {
+    padding: 5px;
+}
+
+.principal {
+    padding: 10px;
+    border: lightgray solid 1px;
+    border-radius: 10px;
+    width: 40%;
+    background-color: #FFFFFF;
+}
+
+.flex-div {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 15px;
+}
+
+.alinhar-direita{
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.table-div {
+    display: table;
+    width: 100%;
+}
+
+.table-tr {
+    display: table-row;
+}
+
+.table-div > div:nth-child(2n) {
+    background-color: #F2F2FA;
+}
+
+.table-td {
+    display: table-cell;
+    padding: 5px;  
+}
+
+h1 {
+    padding-left: 30px;
+}
+
+.body {
+    background-color: #FAFAFA;
+}
+
+.avatar {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+input[readonly] {
+    background-color: #F0F0F0;
+    color: darkgrey;
+    border: none;
+}
+
+.form, label {
+    padding: 5px 0 0 10px;
+}
+
+.form, input {
+    margin-left: 10px;
+}
